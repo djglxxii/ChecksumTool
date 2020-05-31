@@ -1,0 +1,25 @@
+<section>
+  <form [formGroup]="model" (ngSubmit)="onSubmit()">
+
+    <div class="field">
+      <textarea
+        wgtTextArea
+        wgtFocused
+        formControlName="messageStr"
+        placeholder="Type or paste ASTM message here..."
+        rows="8"
+      ></textarea>
+    </div>
+
+    <div class="field">
+      <button wgtButton type="submit">Compute</button>
+      <button wgtButton type="reset" (click)="onClear()">Clear</button>
+    </div>
+  </form>
+</section>
+
+<section *ngIf="segments.length > 0" class="section">
+  <app-table
+    [segments]="segments"
+  ></app-table>
+</section>

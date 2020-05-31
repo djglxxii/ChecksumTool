@@ -1,0 +1,27 @@
+<table wgtTable>
+  <thead>
+  <tr>
+    <th></th>
+    <th>
+      <button
+        wgtButton
+        (click)="onCopyAll()"
+      >Copy All
+      </button>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let segment of segments">
+    <td>{{ segment | EscapeControlCode }}</td>
+    <td>
+      <button
+        wgtButton
+        size="small"
+        (click)="onCopyRow(segment)"
+      >Copy
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

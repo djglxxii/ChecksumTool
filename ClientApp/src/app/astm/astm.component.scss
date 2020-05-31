@@ -1,0 +1,14 @@
+form {
+  textarea {
+    font-family: Monaco, "Lucida Console", monospace;
+    font-size: 12px;
+  }
+
+  button {
+    min-width: 100px;
+
+    &:last-child {
+      margin-left: 2px;
+    }
+  }
+}
