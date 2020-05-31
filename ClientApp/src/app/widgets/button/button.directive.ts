@@ -16,7 +16,7 @@ export class ButtonDirective implements OnInit {
   type = '';
 
   @Input()
-  size: size = 'normal';
+  size: size;
 
   constructor(private readonly _elRef: ElementRef,
               private readonly _render: Renderer2) {
@@ -37,14 +37,14 @@ export class ButtonDirective implements OnInit {
     }
 
     switch (this.size) {
-      case 'small':
-        this.addClass('is-small');
+      case 'normal':
+        this.addClass('is-normal');
         break;
       case 'large':
         this.addClass('is-large');
         break;
       default:
-        this.addClass('is-normal');
+        this.addClass('is-small');
         break;
     }
   }

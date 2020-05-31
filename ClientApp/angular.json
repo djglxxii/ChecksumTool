@@ -125,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "checksum-tool"
+    }
+  },
+  "defaultProject": "checksum-tool",
+  "cli": {
+    "analytics": "eaaacb89-1589-492a-962c-6a389d1ca7cf"
+  }
 }
