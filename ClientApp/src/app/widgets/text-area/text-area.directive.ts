@@ -14,25 +14,23 @@ import { Subscription } from 'rxjs';
 export class TextAreaDirective implements OnInit, OnDestroy {
   private changesSub: Subscription;
 
-  constructor(private readonly elRef: ElementRef,
-              private readonly render: Renderer2,
-              private readonly control: NgControl) {
-
+  constructor(private readonly _elRef: ElementRef,
+              private readonly _render: Renderer2,
+              private readonly _control: NgControl) {
   }
 
   ngOnInit(): void {
-    const el = this.elRef.nativeElement;
-    this.render.addClass(el, 'textarea');
+    this.addClass('textarea');
 
-    this.changesSub = this.control.statusChanges.subscribe(status => {
+    this.changesSub = this._control.statusChanges.subscribe(status => {
       switch (status) {
         case 'INVALID':
-          this.render.removeClass(el, 'is-success');
-          this.render.addClass(el, 'is-danger');
+          this.removeClass('is-success');
+          this.addClass('is-danger');
           break;
         default:
-          this.render.removeClass(el, 'is-danger');
-          this.render.addClass(el, 'is-success');
+          this.removeClass('is-danger');
+          this.addClass('is-success');
           break;
       }
     });
@@ -40,5 +38,13 @@ export class TextAreaDirective implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.changesSub.unsubscribe();
+  }
+
+  private addClass(css: string): void {
+    this._render.addClass(this._elRef.nativeElement, css);
+  }
+
+  private removeClass(css: string): void {
+    this._render.removeClass(this._elRef.nativeElement, css);
   }
 }
