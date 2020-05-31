@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   selector: '[wgtTextArea]'
 })
 export class TextAreaDirective implements OnInit, OnDestroy {
-  private changesSub: Subscription;
+  private _changesSub: Subscription;
 
   constructor(private readonly _elRef: ElementRef,
               private readonly _render: Renderer2,
@@ -22,7 +22,7 @@ export class TextAreaDirective implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.addClass('textarea');
 
-    this.changesSub = this._control.statusChanges.subscribe(status => {
+    this._changesSub = this._control.statusChanges.subscribe(status => {
       switch (status) {
         case 'INVALID':
           this.removeClass('is-success');
@@ -37,7 +37,7 @@ export class TextAreaDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.changesSub.unsubscribe();
+    this._changesSub.unsubscribe();
   }
 
   private addClass(css: string): void {
