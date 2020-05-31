@@ -24,7 +24,8 @@ export class ButtonDirective implements OnInit {
 
   ngOnInit(): void {
     this.addClass('button');
-
+    this.addClass('is-rounded');
+    
     switch (this.type) {
       case 'submit':
         this.addClass('is-success');
