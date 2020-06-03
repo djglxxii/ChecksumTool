@@ -22,6 +22,10 @@ export class TextAreaDirective implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.addClass('textarea');
 
+    if (!this._control) {
+      return;
+    }
+
     this._changesSub = this._control.statusChanges.subscribe(status => {
       switch (status) {
         case 'INVALID':
