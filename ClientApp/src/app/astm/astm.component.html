@@ -12,6 +12,15 @@
     </div>
 
     <div class="field">
+      <label class="checkbox">
+        <input
+          type="checkbox"
+          formControlName="includeEnqEot">
+        Include ENQ and EOT control codes.
+      </label>
+    </div>
+
+    <div class="field">
       <button wgtButton type="submit">Compute</button>
       <button wgtButton type="reset" (click)="onClear()">Clear</button>
     </div>

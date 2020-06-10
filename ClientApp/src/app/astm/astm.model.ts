@@ -15,9 +15,21 @@ export class AstmModel extends FormGroup {
     this.get('messageStr').setValue(val);
   }
 
+  /**
+   * If true, prepend ENQ and append EOT control codes.
+   */
+  get includeEnqEot(): boolean {
+    return this.get('includeEnqEot').value;
+  }
+
+  set includeEnqEot(val: boolean) {
+    this.get('includeEnqEot').setValue(val);
+  }
+
   constructor() {
     super({
-      messageStr: new FormControl('', Validators.required)
+      messageStr: new FormControl('', Validators.required),
+      includeEnqEot: new FormControl(true)
     });
   }
 }

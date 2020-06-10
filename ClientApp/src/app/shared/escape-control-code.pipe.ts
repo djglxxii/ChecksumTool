@@ -9,16 +9,22 @@ import {
 export class EscapeControlCodePipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): any {
-    let message: string = value;
-
-    for (let i = 0; i < 31; i++) {
-      const hex = '<' + i.toString(16).toUpperCase() + '>';
-
-      const regex = new RegExp(String.fromCharCode(i), 'g');
-      message = message.replace(regex, hex);
+    if (typeof value !== 'string') {
+      return value;
     }
 
+    let str = '';
 
-    return message;
+    for (let i = 0; i < value.length; i++) {
+      let char = value[i];
+      const charCode: number = char.charCodeAt(0);
+      if (charCode >= 0 && charCode < 32) {
+        char = '<' + charCode.toString(16).toUpperCase() + '>';
+      }
+
+      str += char;
+    }
+
+    return str;
   }
 }

@@ -16,7 +16,7 @@ export class TableComponent implements OnInit {
 
   @Input()
   segments: string[] = [];
-
+  
   constructor(private readonly _clipboardSvc: ClipboardService) {
   }
 

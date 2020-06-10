@@ -27,7 +27,12 @@ export class AstmComponent implements OnInit {
 
   onSubmit(): void {
     if (this.model.valid) {
-      this.segments = this.astmSvc.getSegments(this.model.messageStr);
+      const segments: string[] = this.astmSvc.getSegments(this.model.messageStr);
+      if (this.model.includeEnqEot) {
+        segments.splice(0, 0, '\x05');
+        segments.push('\x04');
+      }
+      this.segments = segments;
     }
   }
 

@@ -41,7 +41,7 @@ export class TextAreaDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._changesSub.unsubscribe();
+    this._changesSub?.unsubscribe();
   }
 
   private addClass(css: string): void {
